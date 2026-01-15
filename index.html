@@ -26,13 +26,131 @@
         </section>
 
         <section id="tab-income" class="tab-content">
-            <header>
-                <h1>收入 & 投资</h1>
-            </header>
-            <div class="content-placeholder">
-                <p>这里将显示理财收益和工资...</p>
+    <header>
+        <h1>我的小金库</h1>
+    </header>
+    
+    <div class="scrollable-content">
+        <div class="asset-card">
+            <div class="asset-row">
+                <div class="asset-item">
+                    <span class="label">本月收入</span>
+                    <span class="value" id="disp-month-income">¥0.00</span>
+                </div>
+                <div class="asset-item">
+                    <span class="label">投资总本金</span>
+                    <span class="value" id="disp-invest-principal">¥0.00</span>
+                </div>
             </div>
-        </section>
+            <div class="asset-row mt-10">
+                <div class="asset-item highlight">
+                    <span class="label">投资总收益 (浮动)</span>
+                    <span class="value" id="disp-invest-return">¥0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-grid">
+            <button class="action-btn income-btn" onclick="openModal('modal-income')">
+                <span class="icon">💰</span> 记收入
+            </button>
+            <button class="action-btn invest-btn" onclick="openModal('modal-invest-add')">
+                <span class="icon">📥</span> 加投资
+            </button>
+            <button class="action-btn return-btn" onclick="openModal('modal-invest-return')">
+                <span class="icon">📊</span> 记收益
+            </button>
+        </div>
+
+        <div class="section-title-row">
+            <h3>收入明细</h3>
+            <input type="month" id="income-month-filter" class="date-filter">
+        </div>
+        <ul id="income-list" class="data-list">
+            </ul>
+
+        <div class="section-title-row mt-20">
+            <h3>投资组合</h3>
+        </div>
+        <ul id="invest-list" class="data-list">
+            </ul>
+    </div>
+
+    <div id="modal-income" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>💰 记录一笔收入</h3>
+            <div class="form-group">
+                <label>日期</label>
+                <input type="date" id="income-date">
+            </div>
+            <div class="form-group">
+                <label>说明 (如: 工资)</label>
+                <input type="text" id="income-desc" placeholder="输入来源">
+            </div>
+            <div class="form-group">
+                <label>金额</label>
+                <input type="number" id="income-amount" placeholder="0.00">
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" onclick="closeModal('modal-income')">取消</button>
+                <button class="save-btn" onclick="saveIncome()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-invest-add" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>📥 追加/新建投资</h3>
+            <div class="form-group">
+                <label>日期</label>
+                <input type="date" id="invest-add-date">
+            </div>
+            <div class="form-group">
+                <label>选择项目</label>
+                <select id="invest-select-add" onchange="toggleNewInvestInput()">
+                    <option value="new">+ 新建项目...</option>
+                </select>
+            </div>
+            <div class="form-group" id="group-new-invest-name">
+                <label>新项目名称</label>
+                <input type="text" id="invest-new-name" placeholder="如: 基金A, 黄金">
+            </div>
+            <div class="form-group">
+                <label>投入本金</label>
+                <input type="number" id="invest-add-amount" placeholder="0.00">
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" onclick="closeModal('modal-invest-add')">取消</button>
+                <button class="save-btn" onclick="saveInvestAdd()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-invest-return" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>📊 更新当前收益</h3>
+            <p class="hint">输入当前的累计总收益（可为负数）</p>
+            <div class="form-group">
+                <label>日期</label>
+                <input type="date" id="invest-return-date">
+            </div>
+            <div class="form-group">
+                <label>选择项目</label>
+                <select id="invest-select-return">
+                    <option disabled selected>请选择...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>当前总收益 (¥)</label>
+                <input type="number" id="invest-return-amount" placeholder="输入最新盈亏额">
+            </div>
+            <div class="modal-actions">
+                <button class="cancel-btn" onclick="closeModal('modal-invest-return')">取消</button>
+                <button class="save-btn" onclick="saveInvestReturn()">更新</button>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section id="tab-health" class="tab-content">
             <header>
