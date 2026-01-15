@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="我的生活流">
+    
+    <title>我的生活流</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <main id="app-container">
+        <section id="tab-expense" class="tab-content active">
+            <header>
+                <h1>记账 · 消费</h1>
+            </header>
+            <div class="content-placeholder">
+                <p>这里将显示消费记录列表...</p>
+                <button class="add-btn">记一笔支出</button>
+            </div>
+        </section>
+
+        <section id="tab-income" class="tab-content">
+            <header>
+                <h1>收入 & 投资</h1>
+            </header>
+            <div class="content-placeholder">
+                <p>这里将显示理财收益和工资...</p>
+            </div>
+        </section>
+
+        <section id="tab-health" class="tab-content">
+            <header>
+                <h1>身体数据</h1>
+            </header>
+            <div class="content-placeholder">
+                <p>体重、体脂、睡眠数据...</p>
+            </div>
+        </section>
+
+        <section id="tab-daily" class="tab-content">
+            <header>
+                <h1>健身 & 日常</h1>
+            </header>
+            <div class="content-placeholder">
+                <p>今天的训练计划与日记...</p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-target="tab-expense">
+            <span class="icon">💸</span>
+            <span class="label">消费</span>
+        </a>
+        <a href="#" class="nav-item" data-target="tab-income">
+            <span class="icon">📈</span>
+            <span class="label">资产</span>
+        </a>
+        <a href="#" class="nav-item" data-target="tab-health">
+            <span class="icon">❤️</span>
+            <span class="label">身体</span>
+        </a>
+        <a href="#" class="nav-item" data-target="tab-daily">
+            <span class="icon">📝</span>
+            <span class="label">日常</span>
+        </a>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>

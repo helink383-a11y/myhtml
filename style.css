@@ -1,0 +1,108 @@
+/* 全局重置 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent; /* 去除点击高亮 */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f2f2f7; /* iOS 风格背景灰 */
+    color: #000;
+    height: 100vh;
+    overflow: hidden; /* 防止整体滚动 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 顶部标题栏 */
+header {
+    background-color: #fff;
+    padding: 15px;
+    padding-top: env(safe-area-inset-top, 20px); /* 适配刘海屏 */
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 18px;
+}
+
+/* 主内容区域 */
+#app-container {
+    flex: 1;
+    overflow-y: auto; /* 内容过多时内部滚动 */
+    position: relative;
+}
+
+.tab-content {
+    display: none; /* 默认隐藏所有 */
+    height: 100%;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block; /* 激活时显示 */
+    animation: fadeIn 0.2s ease;
+}
+
+/* 占位符样式 */
+.content-placeholder {
+    text-align: center;
+    margin-top: 50px;
+    color: #888;
+}
+
+.add-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* 底部导航栏 */
+.bottom-nav {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    border-top: 1px solid #d1d1d6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 8px;
+    /* 适配 iPhone 底部黑条区域 */
+    padding-bottom: env(safe-area-inset-bottom, 20px); 
+    height: calc(50px + env(safe-area-inset-bottom, 20px));
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    width: 25%;
+}
+
+.nav-item .icon {
+    font-size: 24px;
+    margin-bottom: 2px;
+}
+
+.nav-item.active {
+    color: #007aff; /* iOS 蓝 */
+}
+
+/* 简单的淡入动画 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
